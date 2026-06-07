@@ -1,0 +1,65 @@
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', sans-serif;
+    background-color: #f5f4f0;
+    color: #1a1a1a;
+    padding: 2rem;
+}
+
+/* Planner Wrapper */
+.planner{
+    max-width:860px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap: 16px;
+}
+/* Header */
+.planner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.5rem 2rem;
+    background: #ffffff;
+    border-radius: 16px;
+}   
+.date-title{
+    font-size:24px;
+    font-weight:600;
+    color:#1a1a1a;
+}
+.date-sub{
+    font-size:12px;
+    color:#888;
+    margin-bottom:8px;
+}
+.mood-label {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 8px;
+}
+.mood-row{
+    display:flex;
+    gap:8px;
+}
+.mood-btn{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border: 1px solid #e5e4e0;
+    background: #f5f4f0;
+    font-size:large;
+    cursor:pointer;
+    transition:transform 0.15s;
+}
+.mood-btn.active{
+    transform:scale(1.15);
+    border-color:#534AB8;
+    background:#EEEDFE;
+}
