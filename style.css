@@ -332,3 +332,78 @@ body {
   color: #1a1a1a;
   line-height: 2;
 }
+/* === NOTES & JOURNAL === */
+.notes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.notes-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notes-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.notes-area {
+  width: 100%;
+  background: #f5f4f0;
+  border: 1px solid #e5e4e0;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 13px;
+  color: #1a1a1a;
+  line-height: 1.7;
+  resize: none;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.notes-area:focus {
+  outline: none;
+  border-color: #534AB7;
+}
+
+.gratitude-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gratitude-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #EEEDFE;
+  color: #534AB7;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gratitude-input {
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid #e5e4e0;
+  background: transparent;
+  padding: 8px 4px;
+  font-size: 13px;
+  color: #1a1a1a;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.gratitude-input:focus {
+  outline: none;
+  border-bottom-color: #534AB7;
+}
