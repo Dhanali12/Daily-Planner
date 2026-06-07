@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Daily Planner</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="planner">
+        <!-- Header -->
+        <header class="planner-header">
+            <div class="date-block">
+                <h1 class="date-title>Sunday, June 7</h1>
+                <p class="date-subtitle">Week 23. Start strong. Finish stronger</p>
+            </div>
+            <div class="mood-block">
+                <p class="mood-title">Today's Mood</p>
+                <div class="mood-row">
+                        <button class="mood-btn">😔</button>
+                        <button class="mood-btn">😐</button>
+                        <button class="mood-btn active">😊</button>
+                        <button class="mood-btn">😄</button>
+                        <button class="mood-btn">🤩</button>
+                </div>
+            </div>
+        </header>
+        <!-- MAIN GRID -->
+      <div class="main-grid">
+
+        <!-- SCHEDULE CARD -->
+        <div class="card">
+          <h2 class="card-title">
+            <span class="card-icon">🕐</span> Daily schedule
+          </h2>
+
+          <div class="time-block">
+            <span class="time">8:00</span>
+            <div class="time-pill purple">Morning review + journaling</div>
+          </div>
+          <div class="time-block">
+            <span class="time">9:00</span>
+            <div class="time-pill teal">Deep work block</div>
+          </div>
+          <div class="time-block">
+            <span class="time">11:00</span>
+            <div class="time-pill amber">Team standup</div>
+          </div>
+          <div class="time-block">
+            <span class="time">12:00</span>
+            <div class="time-pill empty">— free —</div>
+          </div>
+          <div class="time-block">
+            <span class="time">2:00</span>
+            <div class="time-pill purple">Project work</div>
+          </div>
+          <div class="time-block">
+            <span class="time">5:00</span>
+            <div class="time-pill teal">Evening walk</div>
+          </div>
+
+        </div>
+
+        <!-- TASKS CARD -->
+        <div class="card">
+          <h2 class="card-title">
+            <span class="card-icon">✅</span> Today's tasks
+          </h2>
+
+          <div class="todo-item">
+            <div class="checkbox done">✓</div>
+            <span class="done-text">Review project brief</span>
+            <div class="priority-dot dot-high"></div>
+          </div>
+          <div class="todo-item">
+            <div class="checkbox done">✓</div>
+            <span class="done-text">Reply to client email</span>
+            <div class="priority-dot dot-med"></div>
+          </div>
+          <div class="todo-item">
+            <div class="checkbox"></div>
+            <span>Build planner layout</span>
+            <div class="priority-dot dot-high"></div>
+          </div>
+          <div class="todo-item">
+            <div class="checkbox"></div>
+            <span>Read 20 pages</span>
+            <div class="priority-dot dot-low"></div>
+          </div>
+          <div class="todo-item">
+            <div class="checkbox"></div>
+            <span>Push code to GitHub</span>
+            <div class="priority-dot dot-med"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+</html>
