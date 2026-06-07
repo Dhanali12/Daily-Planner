@@ -163,3 +163,172 @@ body {
 .dot-high { background: #D85A30; }
 .dot-med  { background: #EF9F27; }
 .dot-low  { background: #1D9E75; }
+
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', sans-serif;
+    background-color: #f5f4f0;
+    color: #1a1a1a;
+    padding: 2rem;
+}
+
+/* Planner Wrapper */
+.planner{
+    max-width:860px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap: 16px;
+}
+/* Header */
+.planner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.5rem 2rem;
+    background: #ffffff;
+    border-radius: 16px;
+}   
+.date-title{
+    font-size:24px;
+    font-weight:600;
+    color:#1a1a1a;
+}
+.date-sub{
+    font-size:12px;
+    color:#888;
+    margin-bottom:8px;
+}
+.mood-label {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 8px;
+}
+.mood-row{
+    display:flex;
+    gap:8px;
+}
+.mood-btn{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border: 1px solid #e5e4e0;
+    background: #f5f4f0;
+    font-size:large;
+    cursor:pointer;
+    transition:transform 0.15s;
+}
+.mood-btn.active{
+    transform:scale(1.15);
+    border-color:#534AB8;
+    background:#EEEDFE;
+}
+/* === HABIT TRACKER === */
+.habit-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.habit-row:last-child { margin-bottom: 0; }
+
+.habit-name {
+  font-size: 13px;
+  color: #1a1a1a;
+  flex: 1;
+}
+
+.habit-streak {
+  font-size: 11px;
+  color: #aaa;
+  min-width: 36px;
+  text-align: right;
+}
+
+.habit-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.hdot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid #e5e4e0;
+  background: #f5f4f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: white;
+}
+
+.hdot.done {
+  background: #534AB7;
+  border-color: #534AB7;
+}
+
+/* === GOALS === */
+.goal-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.goal-label {
+  font-size: 12px;
+  color: #1a1a1a;
+  min-width: 100px;
+}
+
+.goal-bar-wrap {
+  flex: 1;
+  height: 6px;
+  background: #f0efeb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.goal-bar {
+  height: 100%;
+  border-radius: 10px;
+}
+
+.goal-pct {
+  font-size: 11px;
+  color: #aaa;
+  min-width: 28px;
+  text-align: right;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.tag-purple { background: #EEEDFE; color: #534AB7; }
+.tag-teal   { background: #E1F5EE; color: #0F6E56; }
+
+.top3 {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #f0efeb;
+}
+
+.top3-list {
+  font-size: 13px;
+  color: #1a1a1a;
+  line-height: 2;
+}
