@@ -12,20 +12,20 @@
         <!-- Header -->
         <header class="planner-header">
             <div class="date-block">
-                <h1 class="date-title>Sunday, June 7</h1>
+                <h1 class="date-title">Sunday, June 7</h1>
                 <p class="date-subtitle">Week 23. Start strong. Finish stronger</p>
             </div>
             <div class="mood-block">
                 <p class="mood-title">Today's Mood</p>
                 <div class="mood-row">
-                        <button class="mood-btn">😔</button>
-                        <button class="mood-btn">😐</button>
-                        <button class="mood-btn active">😊</button>
-                        <button class="mood-btn">😄</button>
-                        <button class="mood-btn">🤩</button>
+                      <button class="mood-btn" id="mood-1">😔</button>
+                      <button class="mood-btn" id="mood-2">😐</button>
+                      <button class="mood-btn active" id="mood-3">😊</button>
+                      <button class="mood-btn" id="mood-4">😄</button>
+                    <button class="mood-btn" id="mood-5">🤩</button>
                 </div>
             </div>
-        </header>
+          </header>
         <!-- MAIN GRID -->
       <div class="main-grid">
 
@@ -68,27 +68,27 @@
             <span class="card-icon">✅</span> Today's tasks
           </h2>
 
-          <div class="todo-item">
+          <div class="todo-item" id="task-1">
             <div class="checkbox done">✓</div>
             <span class="done-text">Review project brief</span>
             <div class="priority-dot dot-high"></div>
           </div>
-          <div class="todo-item">
+          <div class="todo-item" id="task-2">
             <div class="checkbox done">✓</div>
             <span class="done-text">Reply to client email</span>
             <div class="priority-dot dot-med"></div>
           </div>
-          <div class="todo-item">
+          <div class="todo-item" id="task-3">
             <div class="checkbox"></div>
             <span>Build planner layout</span>
             <div class="priority-dot dot-high"></div>
           </div>
-          <div class="todo-item">
+          <div class="todo-item" id="task-4">
             <div class="checkbox"></div>
             <span>Read 20 pages</span>
             <div class="priority-dot dot-low"></div>
           </div>
-          <div class="todo-item">
+          <div class="todo-item" id="task-5">
             <div class="checkbox"></div>
             <span>Push code to GitHub</span>
             <div class="priority-dot dot-med"></div>
@@ -239,5 +239,6 @@
         </div>
       </div>
     </div>
+  <script src="app.js"></script>
 </html>
 
