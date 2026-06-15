@@ -68,30 +68,13 @@
             <span class="card-icon">✅</span> Today's tasks
           </h2>
 
-          <div class="todo-item" id="task-1">
-            <div class="checkbox done">✓</div>
-            <span class="done-text">Review project brief</span>
-            <div class="priority-dot dot-high"></div>
-          </div>
-          <div class="todo-item" id="task-2">
-            <div class="checkbox done">✓</div>
-            <span class="done-text">Reply to client email</span>
-            <div class="priority-dot dot-med"></div>
-          </div>
-          <div class="todo-item" id="task-3">
-            <div class="checkbox"></div>
-            <span>Build planner layout</span>
-            <div class="priority-dot dot-high"></div>
-          </div>
-          <div class="todo-item" id="task-4">
-            <div class="checkbox"></div>
-            <span>Read 20 pages</span>
-            <div class="priority-dot dot-low"></div>
-          </div>
-          <div class="todo-item" id="task-5">
-            <div class="checkbox"></div>
-            <span>Push code to GitHub</span>
-            <div class="priority-dot dot-med"></div>
+          <!-- Empty — JavaScript will fill this -->
+          <div id="task-list"></div>
+
+          <!-- Add task input -->
+          <div class="add-task-row">
+            <input type="text" id="new-task-input" class="add-task-input" placeholder="Add a new task…" />
+            <button id="add-task-btn" class="add-task-btn">+ Add</button>
           </div>
 
         </div>

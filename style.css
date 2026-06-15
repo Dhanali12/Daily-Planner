@@ -407,3 +407,42 @@ body {
   outline: none;
   border-bottom-color: #534AB7;
 }
+/* === ADD TASK ROW === */
+.add-task-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f0efeb;
+}
+
+.add-task-input {
+  flex: 1;
+  border: 1px solid #e5e4e0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1a1a1a;
+  background: #f5f4f0;
+}
+
+.add-task-input:focus {
+  outline: none;
+  border-color: #534AB7;
+}
+
+.add-task-btn {
+  padding: 8px 16px;
+  background: #534AB7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.add-task-btn:hover {
+  background: #3C3489;
+}
