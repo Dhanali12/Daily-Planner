@@ -185,3 +185,165 @@ habitDots.forEach(function(dot) {
     saveHabits();
   });
 });
+// === INSIGHTS PANEL ===
+
+const insightsToggle = document.getElementById('insights-toggle');
+const insightsPanel = document.getElementById('insights-panel');
+const insightsClose = document.getElementById('insights-close');
+const insightsOverlay = document.getElementById('insights-overlay');
+
+insightsToggle.addEventListener('click', function() {
+  insightsPanel.classList.add('open');
+  insightsOverlay.classList.add('show');
+  renderInsights();
+});
+
+insightsClose.addEventListener('click', closeInsights);
+insightsOverlay.addEventListener('click', closeInsights);
+
+function closeInsights() {
+  insightsPanel.classList.remove('open');
+  insightsOverlay.classList.remove('show');
+}
+
+function renderInsights() {
+  renderMoodHistory();
+  renderTaskCompletion();
+  renderHabitChart();
+  renderWordCloud();
+}
+
+// 😊 Mood history
+const moodEmojis = {
+  'mood-1': '😔', 'mood-2': '😐',
+  'mood-3': '😊', 'mood-4': '😄', 'mood-5': '🤩'
+};
+
+const moodLabels = {
+  'mood-1': 'Rough', 'mood-2': 'Okay',
+  'mood-3': 'Good',  'mood-4': 'Great', 'mood-5': 'Amazing'
+};
+
+function renderMoodHistory() {
+  const container = document.getElementById('mood-history');
+  const currentMood = localStorage.getItem('planner-mood');
+
+  if (!currentMood) {
+    container.innerHTML = '<p style="font-size:12px;color:#aaa;">No mood logged yet</p>';
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="mood-history-item">
+      <span class="mood-history-emoji">${moodEmojis[currentMood]}</span>
+      <span>${moodLabels[currentMood]}</span>
+    </div>
+    <p style="font-size:11px;color:#aaa;margin-top:8px;">
+      More mood history coming in Phase 4 when we add cloud saving!
+    </p>
+  `;
+}
+
+// ✅ Task completion
+function renderTaskCompletion() {
+  const fill = document.getElementById('task-completion-fill');
+  const pct = document.getElementById('task-completion-pct');
+  const sub = document.getElementById('task-completion-sub');
+
+  // Load tasks fresh from localStorage
+  const savedTasks = localStorage.getItem('planner-tasks');
+  const allTasks = savedTasks ? JSON.parse(savedTasks) : tasks;
+
+  if (allTasks.length === 0) {
+    pct.textContent = '0%';
+    sub.textContent = 'No tasks yet';
+    fill.style.width = '0%';
+    return;
+  }
+
+  const done = allTasks.filter(t => t.done).length;
+  const total = allTasks.length;
+  const percent = Math.round((done / total) * 100);
+
+  fill.style.width = percent + '%';
+  pct.textContent = percent + '%';
+  sub.textContent = done + ' of ' + total + ' tasks completed today';
+}
+
+// 🔁 Habit chart
+function renderHabitChart() {
+  const container = document.getElementById('habit-chart');
+  const habitRows = document.querySelectorAll('.habit-row');
+  container.innerHTML = '';
+
+  if (habitRows.length === 0) {
+    container.innerHTML = '<p style="font-size:12px;color:#aaa;">No habits found</p>';
+    return;
+  }
+
+  habitRows.forEach(function(row) {
+    const nameEl = row.querySelector('.habit-name');
+    const name = nameEl ? nameEl.textContent.trim() : 'Habit';
+    const dots = row.querySelectorAll('.hdot');
+    const doneDots = row.querySelectorAll('.hdot.done');
+
+    if (dots.length === 0) return;
+
+    const percent = Math.round((doneDots.length / dots.length) * 100);
+
+    const rowEl = document.createElement('div');
+    rowEl.classList.add('habit-chart-row');
+    rowEl.innerHTML = `
+      <span class="habit-chart-name">${name}</span>
+      <div class="habit-chart-bar-wrap">
+        <div class="habit-chart-bar" style="width: ${percent}%"></div>
+      </div>
+      <span class="habit-chart-pct">${percent}%</span>
+    `;
+    container.appendChild(rowEl);
+  });
+}
+
+// 💬 Gratitude word cloud
+function renderWordCloud() {
+  const container = document.getElementById('word-cloud');
+  const stopWords = ['i', 'a', 'the', 'and', 'or', 'for', 'to', 'my',
+                     'is', 'am', 'are', 'was', 'of', 'in', 'it', 'me',
+                     'so', 'be', 'do', 'at', 'on', 'an', 'we', 'by'];
+
+  let allText = '';
+  for (let i = 0; i < 4; i++) {
+    const val = localStorage.getItem('planner-gratitude-' + i) || '';
+    allText += ' ' + val;
+  }
+
+  // Also include notes
+  const notes = localStorage.getItem('planner-notes') || '';
+  allText += ' ' + notes;
+
+  const words = allText.toLowerCase().replace(/[^a-z\s]/g, '').split(/\s+/);
+  const freq = {};
+
+  words.forEach(function(word) {
+    if (word.length < 3) return;
+    if (stopWords.includes(word)) return;
+    freq[word] = (freq[word] || 0) + 1;
+  });
+
+  const sorted = Object.entries(freq)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 15);
+
+  if (sorted.length === 0) {
+    container.innerHTML = '<p style="font-size:12px;color:#aaa;">Write in gratitude to see words appear</p>';
+    return;
+  }
+
+  const maxFreq = sorted[0][1];
+
+  container.innerHTML = sorted.map(function([word, count]) {
+    const size = count === maxFreq ? 'large' :
+                 count >= maxFreq / 2 ? 'medium' : 'small';
+    return `<span class="word-tag ${size}">${word}</span>`;
+  }).join('');
+}
