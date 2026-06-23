@@ -86,9 +86,73 @@ taskInput.addEventListener('keypress', function(e) {
   }
 });
 
+// === GRATITUDE — save as you type ===
 
-// === HABIT DOTS ===
+const gratitudeInputs = document.querySelectorAll('.gratitude-input');
 
+gratitudeInputs.forEach(function(input, index) {
+
+  // Load saved value
+  const saved = localStorage.getItem('planner-gratitude-' + index);
+  if (saved) input.value = saved;
+
+  // Save on every keystroke
+  input.addEventListener('input', function() {
+    localStorage.setItem('planner-gratitude-' + index, input.value);
+  });
+
+});
+
+
+// === NOTES — save as you type ===
+
+const notesArea = document.querySelector('.notes-area');
+
+if (notesArea) {
+  const savedNotes = localStorage.getItem('planner-notes');
+  if (savedNotes) notesArea.value = savedNotes;
+
+  notesArea.addEventListener('input', function() {
+    localStorage.setItem('planner-notes', notesArea.value);
+  });
+}
+
+// === HABIT DOTS — save state ===
+
+function saveHabits() {
+  const habitState = [];
+  document.querySelectorAll('.habit-row').forEach(function(row, rowIndex) {
+    const dots = row.querySelectorAll('.hdot');
+    const rowState = [];
+    dots.forEach(function(dot) {
+      rowState.push(dot.classList.contains('done'));
+    });
+    habitState.push(rowState);
+  });
+  localStorage.setItem('planner-habits', JSON.stringify(habitState));
+}
+
+function loadHabits() {
+  const saved = localStorage.getItem('planner-habits');
+  if (!saved) return;
+
+  const habitState = JSON.parse(saved);
+  document.querySelectorAll('.habit-row').forEach(function(row, rowIndex) {
+    if (!habitState[rowIndex]) return;
+    const dots = row.querySelectorAll('.hdot');
+    dots.forEach(function(dot, dotIndex) {
+      if (habitState[rowIndex][dotIndex]) {
+        dot.classList.add('done');
+        dot.textContent = '✓';
+      }
+    });
+  });
+}
+
+// Load saved habit state on startup
+loadHabits();
+
+// Make dots clickable and save on click
 const habitDots = document.querySelectorAll('.hdot');
 
 habitDots.forEach(function(dot) {
@@ -100,5 +164,6 @@ habitDots.forEach(function(dot) {
       dot.classList.add('done');
       dot.textContent = '✓';
     }
+    saveHabits();
   });
 });
