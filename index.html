@@ -7,6 +7,56 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- INSIGHTS TOGGLE BUTTON -->
+    <button class="insights-toggle" id="insights-toggle">
+      📊 Insights
+    </button>
+
+    <!-- INSIGHTS SIDE PANEL -->
+    <div class="insights-panel" id="insights-panel">
+
+      <div class="insights-header">
+        <h2 class="insights-title">Your insights</h2>
+        <div class="insights-actions">
+          <a href="insights.html" class="insights-expand">↗ Expand</a>
+          <button class="insights-close" id="insights-close">✕</button>
+        </div>
+      </div>
+
+      <!-- MOOD HISTORY -->
+      <div class="insight-card">
+        <p class="insight-label">😊 Mood history</p>
+        <div class="mood-history" id="mood-history"></div>
+      </div>
+
+      <!-- TASK COMPLETION -->
+      <div class="insight-card">
+        <p class="insight-label">✅ Task completion</p>
+        <div class="task-completion-wrap">
+          <div class="task-completion-bar">
+            <div class="task-completion-fill" id="task-completion-fill"></div>
+          </div>
+          <span class="task-completion-pct" id="task-completion-pct">0%</span>
+        </div>
+        <p class="task-completion-sub" id="task-completion-sub"></p>
+      </div>
+
+      <!-- HABIT CHART -->
+      <div class="insight-card">
+        <p class="insight-label">🔁 Habit completion</p>
+        <div class="habit-chart" id="habit-chart"></div>
+      </div>
+
+      <!-- GRATITUDE WORDS -->
+      <div class="insight-card">
+        <p class="insight-label">💬 Gratitude words</p>
+        <div class="word-cloud" id="word-cloud"></div>
+      </div>
+
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="insights-overlay" id="insights-overlay"></div>
 
     <div class="planner">
         <!-- Header -->
