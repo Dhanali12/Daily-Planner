@@ -1,277 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Daily Planner</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Daily Planner</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- INSIGHTS TOGGLE BUTTON -->
-    <button class="insights-toggle" id="insights-toggle">
-      📊 Insights
-    </button>
 
-    <!-- INSIGHTS SIDE PANEL -->
-    <div class="insights-panel" id="insights-panel">
-
-      <div class="insights-header">
-        <h2 class="insights-title">Your insights</h2>
-        <div class="insights-actions">
-          <a href="insights.html" class="insights-expand">↗ Expand</a>
-          <button class="insights-close" id="insights-close">✕</button>
-        </div>
-      </div>
-
-      <!-- MOOD HISTORY -->
-      <div class="insight-card">
-        <p class="insight-label">😊 Mood history</p>
-        <div class="mood-history" id="mood-history"></div>
-      </div>
-
-      <!-- TASK COMPLETION -->
-      <div class="insight-card">
-        <p class="insight-label">✅ Task completion</p>
-        <div class="task-completion-wrap">
-          <div class="task-completion-bar">
-            <div class="task-completion-fill" id="task-completion-fill"></div>
-          </div>
-          <span class="task-completion-pct" id="task-completion-pct">0%</span>
-        </div>
-        <p class="task-completion-sub" id="task-completion-sub"></p>
-      </div>
-
-      <!-- HABIT CHART -->
-      <div class="insight-card">
-        <p class="insight-label">🔁 Habit completion</p>
-        <div class="habit-chart" id="habit-chart"></div>
-      </div>
-
-      <!-- GRATITUDE WORDS -->
-      <div class="insight-card">
-        <p class="insight-label">💬 Gratitude words</p>
-        <div class="word-cloud" id="word-cloud"></div>
-      </div>
-
+  <!-- INSIGHTS SIDE PANEL -->
+  <div class="insights-panel" id="insights-panel">
+    <div class="insights-header">
+      <h2 class="insights-title">Insights</h2>
+      <button class="insights-close" id="insights-close">✕</button>
     </div>
-
-    <!-- OVERLAY -->
-    <div class="insights-overlay" id="insights-overlay"></div>
-
-    <div class="planner">
-        <!-- Header -->
-        <header class="planner-header">
-            <div class="date-block">
-                <h1 class="date-title">Sunday, June 7</h1>
-                <p class="date-subtitle">Week 23. Start strong. Finish stronger</p>
-            </div>
-            <div class="mood-block">
-                <p class="mood-title">Today's Mood</p>
-                <div class="mood-row">
-                      <button class="mood-btn" id="mood-1">😔</button>
-                      <button class="mood-btn" id="mood-2">😐</button>
-                      <button class="mood-btn active" id="mood-3">😊</button>
-                      <button class="mood-btn" id="mood-4">😄</button>
-                    <button class="mood-btn" id="mood-5">🤩</button>
-                </div>
-            </div>
-          </header>
-        <!-- MAIN GRID -->
-      <div class="main-grid">
-
-        <!-- SCHEDULE CARD -->
-        <div class="card">
-          <h2 class="card-title">
-            <span class="card-icon">🕐</span> Daily schedule
-          </h2>
-
-          <div class="time-block">
-            <span class="time">8:00</span>
-            <div class="time-pill purple">Morning review + journaling</div>
-          </div>
-          <div class="time-block">
-            <span class="time">9:00</span>
-            <div class="time-pill teal">Deep work block</div>
-          </div>
-          <div class="time-block">
-            <span class="time">11:00</span>
-            <div class="time-pill amber">Team standup</div>
-          </div>
-          <div class="time-block">
-            <span class="time">12:00</span>
-            <div class="time-pill empty">— free —</div>
-          </div>
-          <div class="time-block">
-            <span class="time">2:00</span>
-            <div class="time-pill purple">Project work</div>
-          </div>
-          <div class="time-block">
-            <span class="time">5:00</span>
-            <div class="time-pill teal">Evening walk</div>
-          </div>
-
+    <div class="time-filter">
+      <button class="time-btn active" data-period="7">7d</button>
+      <button class="time-btn" data-period="30">Month</button>
+      <button class="time-btn" data-period="90">Quarter</button>
+      <button class="time-btn" data-period="180">6 mo</button>
+      <button class="time-btn" data-period="365">Year</button>
+    </div>
+    <div class="insight-card">
+      <p class="insight-label">😊 Mood</p>
+      <div class="mood-history" id="mood-history"></div>
+    </div>
+    <div class="insight-card">
+      <p class="insight-label">✅ Tasks done</p>
+      <div class="task-completion-wrap">
+        <div class="task-completion-bar">
+          <div class="task-completion-fill" id="task-completion-fill"></div>
         </div>
-
-        <!-- TASKS CARD -->
-        <div class="card">
-          <h2 class="card-title">
-            <span class="card-icon">✅</span> Today's tasks
-          </h2>
-
-          <!-- Empty — JavaScript will fill this -->
-          <div id="task-list"></div>
-
-          <!-- Add task input -->
-          <div class="add-task-row">
-            <input type="text" id="new-task-input" class="add-task-input" placeholder="Add a new task…" />
-            <button id="add-task-btn" class="add-task-btn">+ Add</button>
-          </div>
-
-        </div>
-
+        <span class="task-completion-pct" id="task-completion-pct">0%</span>
       </div>
-    <!-- SECOND GRID: HABITS + GOALS -->
-      <div class="main-grid">
+      <p class="task-completion-sub" id="task-completion-sub"></p>
+    </div>
+    <div class="insight-card">
+      <p class="insight-label">🔁 Habits</p>
+      <div class="habit-chart" id="habit-chart"></div>
+    </div>
+    <div class="insight-card">
+      <p class="insight-label">💬 Gratitude words</p>
+      <div class="word-cloud" id="word-cloud"></div>
+    </div>
+  </div>
+  <div class="insights-overlay" id="insights-overlay"></div>
 
-        <!-- HABIT TRACKER CARD -->
-        <div class="card">
-          <h2 class="card-title">
-            <span class="card-icon">🔁</span> Habit tracker
-          </h2>
+  <!-- APP SHELL -->
+  <div class="app">
 
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="logo">✦ planner</div>
+        <nav class="nav">
+          <button class="nav-btn active" data-tab="today">
+            <span class="nav-icon">📅</span>
+            <span class="nav-label">Today</span>
+          </button>
+          <button class="nav-btn" data-tab="habits">
+            <span class="nav-icon">🔁</span>
+            <span class="nav-label">Habits</span>
+          </button>
+          <button class="nav-btn" data-tab="goals">
+            <span class="nav-icon">🎯</span>
+            <span class="nav-label">Goals</span>
+          </button>
+          <button class="nav-btn" data-tab="journal">
+            <span class="nav-icon">📝</span>
+            <span class="nav-label">Journal</span>
+          </button>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <button class="insights-toggle" id="insights-toggle">
+          <span>📊</span>
+          <span class="nav-label">Insights</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <!-- TODAY TAB -->
+      <div class="tab active" id="tab-today">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title" id="date-title">Sunday, June 7</h1>
+            <p class="page-sub">Week 23 · Start strong, finish stronger</p>
+          </div>
+          <div class="mood-block">
+            <p class="mood-label">Mood</p>
+            <div class="mood-row">
+              <button class="mood-btn" id="mood-1">😔</button>
+              <button class="mood-btn" id="mood-2">😐</button>
+              <button class="mood-btn" id="mood-3">😊</button>
+              <button class="mood-btn" id="mood-4">😄</button>
+              <button class="mood-btn" id="mood-5">🤩</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="today-grid">
+          <!-- SCHEDULE -->
+          <div class="panel">
+            <h2 class="panel-title">Schedule</h2>
+            <div class="time-block"><span class="time">8:00</span><div class="time-pill purple">Morning review</div></div>
+            <div class="time-block"><span class="time">9:00</span><div class="time-pill teal">Deep work block</div></div>
+            <div class="time-block"><span class="time">11:00</span><div class="time-pill amber">Team standup</div></div>
+            <div class="time-block"><span class="time">12:00</span><div class="time-pill empty">— free —</div></div>
+            <div class="time-block"><span class="time">2:00</span><div class="time-pill purple">Project work</div></div>
+            <div class="time-block"><span class="time">5:00</span><div class="time-pill teal">Evening walk</div></div>
+          </div>
+
+          <!-- TASKS -->
+          <div class="panel">
+            <h2 class="panel-title">Tasks</h2>
+            <div id="task-list"></div>
+            <div class="add-task-row">
+              <input type="text" id="new-task-input" class="add-task-input" placeholder="Add a task…" />
+              <button id="add-task-btn" class="add-task-btn">+ Add</button>
+            </div>
+          </div>
+
+          <!-- TOP 3 -->
+          <div class="panel">
+            <h2 class="panel-title">Top 3 today</h2>
+            <div class="top3-item">
+              <span class="top3-num">1</span>
+              <input class="top3-input" id="top3-1" type="text" placeholder="Most important thing…" />
+            </div>
+            <div class="top3-item">
+              <span class="top3-num">2</span>
+              <input class="top3-input" id="top3-2" type="text" placeholder="Second priority…" />
+            </div>
+            <div class="top3-item">
+              <span class="top3-num">3</span>
+              <input class="top3-input" id="top3-3" type="text" placeholder="Third priority…" />
+            </div>
+            <h2 class="panel-title" style="margin-top:1.5rem;">Daily intention</h2>
+            <input class="intention-input" id="intention" type="text" placeholder="What will make today a good day?" />
+          </div>
+        </div>
+      </div>
+
+      <!-- HABITS TAB -->
+      <div class="tab" id="tab-habits">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Habits</h1>
+            <p class="page-sub">This week</p>
+          </div>
+        </div>
+        <div class="panel habits-panel">
           <div class="habit-row">
             <span class="habit-name">💧 Drink water</span>
             <span class="habit-streak">5d 🔥</span>
             <div class="habit-dots">
-              <div class="hdot done">✓</div>
-              <div class="hdot done">✓</div>
-              <div class="hdot done">✓</div>
-              <div class="hdot done">✓</div>
-              <div class="hdot done">✓</div>
-              <div class="hdot"></div>
-              <div class="hdot"></div>
+              <div class="hdot done">✓</div><div class="hdot done">✓</div>
+              <div class="hdot done">✓</div><div class="hdot done">✓</div>
+              <div class="hdot done">✓</div><div class="hdot"></div><div class="hdot"></div>
             </div>
           </div>
-
           <div class="habit-row">
             <span class="habit-name">🏃 Exercise</span>
             <span class="habit-streak">3d 🔥</span>
             <div class="habit-dots">
-              <div class="hdot done">✓</div>
-              <div class="hdot done">✓</div>
-              <div class="hdot"></div>
-              <div class="hdot done">✓</div>
-              <div class="hdot"></div>
-              <div class="hdot"></div>
-              <div class="hdot"></div>
+              <div class="hdot done">✓</div><div class="hdot done">✓</div>
+              <div class="hdot"></div><div class="hdot done">✓</div>
+              <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
             </div>
           </div>
-
           <div class="habit-row">
             <span class="habit-name">📚 Reading</span>
             <span class="habit-streak">7d 🔥</span>
             <div class="habit-dots">
-              <div class="hdot done">✓</div>
-              <div class="hdot done">✓</div>
-              <div class="hdot done">✓</div>
-              <div class="hdot done">✓</div>
-              <div class="hdot done">✓</div>
-              <div class="hdot done">✓</div>
+              <div class="hdot done">✓</div><div class="hdot done">✓</div>
+              <div class="hdot done">✓</div><div class="hdot done">✓</div>
+              <div class="hdot done">✓</div><div class="hdot done">✓</div>
               <div class="hdot done">✓</div>
             </div>
           </div>
-
           <div class="habit-row">
             <span class="habit-name">🧘 Meditate</span>
             <span class="habit-streak">2d 🔥</span>
             <div class="habit-dots">
-              <div class="hdot"></div>
-              <div class="hdot"></div>
-              <div class="hdot done">✓</div>
-              <div class="hdot done">✓</div>
-              <div class="hdot"></div>
-              <div class="hdot"></div>
-              <div class="hdot"></div>
+              <div class="hdot"></div><div class="hdot"></div>
+              <div class="hdot done">✓</div><div class="hdot done">✓</div>
+              <div class="hdot"></div><div class="hdot"></div><div class="hdot"></div>
             </div>
           </div>
-
         </div>
+      </div>
 
-        <!-- GOALS CARD -->
-        <div class="card">
-          <h2 class="card-title">
-            <span class="card-icon">🎯</span> Goals & priorities
-          </h2>
-
-          <span class="section-tag tag-purple">This week</span>
-
+      <!-- GOALS TAB -->
+      <div class="tab" id="tab-goals">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Goals</h1>
+            <p class="page-sub">This week</p>
+          </div>
+        </div>
+        <div class="panel goals-panel">
           <div class="goal-item">
             <span class="goal-label">Ship planner v1</span>
             <div class="goal-bar-wrap">
-              <div class="goal-bar" style="width: 60%; background: #534AB7;"></div>
+              <div class="goal-bar" style="width:60%;background:#6C63FF"></div>
             </div>
             <span class="goal-pct">60%</span>
           </div>
           <div class="goal-item">
             <span class="goal-label">Read book</span>
             <div class="goal-bar-wrap">
-              <div class="goal-bar" style="width: 40%; background: #0F6E56;"></div>
+              <div class="goal-bar" style="width:40%;background:#2A8A8A"></div>
             </div>
             <span class="goal-pct">40%</span>
           </div>
           <div class="goal-item">
             <span class="goal-label">Exercise 4x</span>
             <div class="goal-bar-wrap">
-              <div class="goal-bar" style="width: 75%; background: #BA7517;"></div>
+              <div class="goal-bar" style="width:75%;background:#E07A3A"></div>
             </div>
             <span class="goal-pct">75%</span>
           </div>
-
-          <div class="top3">
-            <span class="section-tag tag-teal">Top 3 today</span>
-            <p class="top3-list">1. Build planner layout in HTML<br>2. Commit code to GitHub<br>3. Read chapter 3</p>
-          </div>
-
         </div>
-
       </div>
 
-    <!-- NOTES & JOURNAL -->
-      <div class="card">
-        <h2 class="card-title">
-          <span class="card-icon">📝</span> Notes & journal
-        </h2>
-
-        <div class="notes-grid">
-
-          <div class="notes-section">
-            <p class="notes-label">Free notes</p>
-            <textarea class="notes-area" rows="5" 
-              placeholder="What's on your mind today? Thoughts, ideas, reflections…">Today I started building my own daily planner from scratch. Excited to learn HTML and CSS properly — going step by step and not rushing. The layout is looking really clean already!</textarea>
+      <!-- JOURNAL TAB -->
+      <div class="tab" id="tab-journal">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Journal</h1>
+            <p class="page-sub">Notes & gratitude</p>
           </div>
-
-          <div class="notes-section">
-            <p class="notes-label">Gratitude — 3 things today</p>
+        </div>
+        <div class="journal-grid">
+          <div class="panel">
+            <h2 class="panel-title">Free notes</h2>
+            <textarea class="notes-area" rows="10" placeholder="What's on your mind today?"></textarea>
+          </div>
+          <div class="panel">
+            <h2 class="panel-title">Gratitude — 3 things</h2>
             <div class="gratitude-item">
               <span class="gratitude-num">1</span>
-              <input type="text" class="gratitude-input" value="Making progress on my planner project" />
+              <input type="text" class="gratitude-input" placeholder="I'm grateful for…" />
             </div>
             <div class="gratitude-item">
               <span class="gratitude-num">2</span>
-              <input type="text" class="gratitude-input" value="Good weather for a walk" />
+              <input type="text" class="gratitude-input" placeholder="I'm grateful for…" />
             </div>
             <div class="gratitude-item">
               <span class="gratitude-num">3</span>
-              <input type="text" class="gratitude-input" placeholder="Something you're grateful for…" />
+              <input type="text" class="gratitude-input" placeholder="I'm grateful for…" />
             </div>
-
-            <p class="notes-label" style="margin-top: 20px;">Daily intention</p>
-            <input type="text" class="gratitude-input" value="Stay focused, be kind to myself, ship something." />
+            <div class="gratitude-item" style="margin-top:1.5rem;">
+              <span class="gratitude-num">✦</span>
+              <input type="text" class="gratitude-input" placeholder="Daily intention…" />
+            </div>
           </div>
-
         </div>
       </div>
-    </div>
-  <script src="app.js"></script>
-</html>
 
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
